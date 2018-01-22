@@ -1,0 +1,8 @@
+*.pyc
+*.egg-info/
+build/
+dist/
+env/
+docs/index.rst
+docs/modules.rst
+docs/build/
