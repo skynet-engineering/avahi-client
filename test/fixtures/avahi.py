@@ -1,3 +1,5 @@
+# flake8: noqa
+
 # Created with:
 # $ avahi-browse --resolve --parsable --no-db-lookup --terminate _http._tcp
 BROWSE_OUTPUT = """

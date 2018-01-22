@@ -2,7 +2,7 @@ import setuptools
 
 
 setuptools.setup(
-    name='avahi',
+    name='avahi-client',
     packages=['avahi'],
     version='1.0.0',
     description='Library for service publication and discovery using Avahi',
