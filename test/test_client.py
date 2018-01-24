@@ -21,12 +21,22 @@ class TestClient(TestCase):
             'EPSON XP-410 Series',
         )
 
-    def test_parse_txt(self):
-        txt = '"name=name" "detail=detail"'
+    def test_parse_txt_key_value(self):
+        txt = '"name=name" "detail=detail with space"'
+        self.assertEqual(
+            parse_txt(txt),
+            {'name': 'name', 'detail': 'detail with space'},
+        )
+
+    def test_parse_txt_unformatted(self):
+        txt = '"name=name" "some badly formatted record" "detail=detail"'
         self.assertEqual(
             parse_txt(txt),
             {'name': 'name', 'detail': 'detail'},
         )
+
+    def test_parse_txt_empty(self):
+        self.assertEqual(parse_txt(''), {})
 
     @mock.patch.object(threading, 'Thread')
     def test_publish_service(self, mock_thread):

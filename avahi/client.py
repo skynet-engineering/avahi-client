@@ -32,11 +32,13 @@ def parse_txt(txt):
     :return: A key-value map of all entries represented in the txt string.
     """
     def reduction(acc, val):
-        key, value = val.split('=')
-        # Remove the leading and trailing double quotes
-        return dict(acc, **{key[1:]: value[:-1]})
+        try:
+            key, value = val.split('=')
+            return dict(acc, **{key: value})
+        except ValueError:
+            return acc
 
-    return reduce(reduction, filter(None, txt.split(' ')), {})
+    return reduce(reduction, filter(None, txt[1:-1].split('" "')), {})
 
 
 class AvahiClient(object):
